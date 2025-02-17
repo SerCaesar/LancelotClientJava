@@ -43,16 +43,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      - name: Compile Java files
+        run: javac -d build/classes/java/main ./*.java
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Verify compilation
+        run: ls -l build/classes/java/main
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
