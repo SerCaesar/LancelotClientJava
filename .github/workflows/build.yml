@@ -27,6 +27,9 @@ jobs:
 
       - name: Verify compilation
         run: ls -l build/classes/java/main
+
+      - name: List files
+        run: ls -R
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
