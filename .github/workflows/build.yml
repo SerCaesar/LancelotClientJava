@@ -19,8 +19,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Debug file structure
+        run: ls -l
+
       - name: Compile Java files
-        run: javac -d build/classes/java/main src/**/*.java
+        run: javac -d build/classes/java/main ./*.java
 
       - name: Verify compilation
         run: ls -l build/classes/java/main
